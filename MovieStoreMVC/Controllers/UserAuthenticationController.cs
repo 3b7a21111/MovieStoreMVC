@@ -13,20 +13,20 @@ namespace MovieStoreMVC.Controllers
             this.authService = authService;
         }
         //create one admin in our project 
-        //public async Task<IActionResult> Register()
-        //{
-        //    var model = new RegisterModel
-        //    {
-        //        Email = "admin@gmail.com",
-        //        userName = "admin",
-        //        Name = "Muhammed",
-        //        Password = "Admin@123",
-        //        PasswordConfirm = "Admin@123",
-        //        Role = "Admin"
-        //    };
-        //    var result = await authService.RegisterAsync(model);
-        //    return Ok(result.Message);
-        //}
+        public async Task<IActionResult> Register()
+        {
+            var model = new RegisterModel
+            {
+                Email = "admin@gmail.com",
+                Username = "admin",
+                Name = "Muhammed",
+                Password = "Admin@123",
+                PasswordConfirm = "Admin@123",
+                Role = "Admin"
+            };
+            var result = await authService.RegisterAsync(model);
+            return Ok(result.Message);
+        }
 
         public async Task<IActionResult> Login()
         {
