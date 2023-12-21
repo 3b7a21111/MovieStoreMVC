@@ -15,7 +15,9 @@ builder.Services.AddDbContext<DataBaseContext>(options=>options.UseSqlServer(con
 builder.Services.AddIdentity<ApplicationUser,IdentityRole>().AddEntityFrameworkStores<DataBaseContext>()
     .AddDefaultTokenProviders();
 builder.Services.AddScoped<IUserAuthenticationService, UserAuthenticationService>();
-
+builder.Services.AddScoped<IGenreService, GenreService>();
+builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<IMovieService, MovieService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,6 +37,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=UserAuthentication}/{action=Login}/{id?}");
 
 app.Run();

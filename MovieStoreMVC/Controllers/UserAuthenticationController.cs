@@ -28,7 +28,7 @@ namespace MovieStoreMVC.Controllers
         //    return Ok(result.Message);
         //}
 
-        public async Task<IActionResult> Login()
+        public IActionResult Login()
         {
             return View();
         }
@@ -44,9 +44,14 @@ namespace MovieStoreMVC.Controllers
             
             else
             {
-                TempData["msg"] = "Erroer in logged in";
+                TempData["msg"] = "Could not logged in";
                 return RedirectToAction(nameof(Login));
             }
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await authService.LogoutAsync();
+            return RedirectToAction(nameof(Login));
         }
     }
 }
